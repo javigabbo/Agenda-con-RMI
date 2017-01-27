@@ -1,13 +1,23 @@
 package servidor;
 
-public interface Funciones {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.HashMap;
 
-	public static void muestraContactos(){}
+public interface Funciones extends Remote{
 	
-	public static void nuevoContacto(String nombre, long telefono, String email){}
+	public String muestraMenu()throws RemoteException;
 	
-	public static void modificaContacto(int opcion){}
+	public boolean login(String usuario, String password) throws RemoteException;
 	
-	public static void eliminaContacto(String nombre){}
+	public HashMap<String, String> muestraContactos() throws RemoteException;
+	
+	public String nuevoContacto(String nombre, long telefono, String email) throws RemoteException;
+	
+	public String modificaContacto(long telefono) throws RemoteException;
+	
+	public String contactoModificado(long telefonoViejo, String nombre, long telefono, String email) throws RemoteException;
+	
+	public String eliminaContacto(long telefono) throws RemoteException;
 	
 }
